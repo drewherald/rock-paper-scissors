@@ -41,8 +41,22 @@ function getComputerChoice(){
         return "error";
     }
 
-    const playerSelection = "rock";
-    const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
+    function game(){
+        let playerChoice;
+        let winCounter = 0;
+        let temp;
+        for(let i=0;i<5;i++){
+            playerChoice = prompt("Rock, Paper, Scissors?");
+            temp = playRound(playerChoice, getComputerChoice());
+            console.log(temp);
+            if(temp.includes("Win")){
+                winCounter++;
+            }
+        }
+        alert(`You won ${winCounter} times!`)
+    }
+
+
+    game();
 
     
