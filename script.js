@@ -1,3 +1,19 @@
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
+
+
+rockBtn.addEventListener("click",function(){
+    game("rock")
+});
+paperBtn.addEventListener("click",function(){
+    game("paper")
+});
+scissorsBtn.addEventListener("click",function(){
+    game("scissors")
+});
+
+
 function getComputerChoice(){
     let value = Math.random();
     if(value<0.33){
@@ -41,22 +57,22 @@ function getComputerChoice(){
         return "error";
     }
 
-    function game(){
-        let playerChoice;
+    function game(playerChoice){
         let winCounter = 0;
         let temp;
-        for(let i=0;i<5;i++){
-            playerChoice = prompt("Rock, Paper, Scissors?");
             temp = playRound(playerChoice, getComputerChoice());
             console.log(temp);
             if(temp.includes("Win")){
                 winCounter++;
             }
-        }
-        alert(`You won ${winCounter} times!`)
+            
+            document.getElementById("results").innerHTML = temp;
+            console.log(temp);
     }
 
+   
 
-    game();
+
+
 
     
