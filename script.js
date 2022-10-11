@@ -2,6 +2,9 @@ const rockBtn = document.querySelector(".rock");
 const paperBtn = document.querySelector(".paper");
 const scissorsBtn = document.querySelector(".scissors");
 
+let winCounter = 0;
+let loseCounter = 0;
+
 
 rockBtn.addEventListener("click",function(){
     game("rock")
@@ -58,15 +61,25 @@ function getComputerChoice(){
     }
 
     function game(playerChoice){
-        let winCounter = 0;
+       if(winCounter>=5){
+        document.getElementById("results").innerHTML = "Game over! You win!";
+        return;
+       }
+       if(loseCounter>=5){
+        document.getElementById("results").innerHTML = "Game over! You lose!";
+        return;
+       }
         let temp;
             temp = playRound(playerChoice, getComputerChoice());
             console.log(temp);
             if(temp.includes("Win")){
                 winCounter++;
+            } else if(temp.includes("Lose")){
+                loseCounter++;
             }
             
-            document.getElementById("results").innerHTML = temp;
+            
+            document.getElementById("results").innerHTML = `${temp} \n Win: ${winCounter} Lose: ${loseCounter}`;
             console.log(temp);
     }
 
